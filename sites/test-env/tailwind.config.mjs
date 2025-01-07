@@ -13,7 +13,7 @@ const keppel = {
 };
 
 /** @type {import("tailwindcss").Config} */
-module.exports = {
+export default {
 	theme: {
 		extend: {
 			colors: {

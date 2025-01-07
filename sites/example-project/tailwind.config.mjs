@@ -1,11 +1,13 @@
-const evidenceTailwind = require('@evidence-dev/tailwind/config').config;
-const evidenceConfig = require('@evidence-dev/sdk/config').getEvidenceConfig();
+import {config as evidenceTailwind} from '@evidence-dev/tailwind/config';
+import { getEvidenceConfig } from '@evidence-dev/sdk/config';
+
+const evidenceConfig = getEvidenceConfig();
 
 const fs = require('fs');
 const path = require('path');
 let presets = [evidenceTailwind];
 
-const altConfigFilenames = ['tailwind.config.js', 'tailwind.config.cjs'];
+const altConfigFilenames = ['tailwind.config.js', 'tailwind.config.mjs'];
 const altConfigFilepaths = altConfigFilenames.map((filename) => path.join('..', '..', filename));
 // Use find so that we can stop iteration
 altConfigFilepaths.find((file) => {
@@ -45,4 +47,4 @@ const config = {
 	plugins: []
 };
 
-module.exports = config;
+export default config;

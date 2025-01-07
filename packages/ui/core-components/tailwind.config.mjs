@@ -1,4 +1,4 @@
-const evidenceTailwind = require('@evidence-dev/tailwind/config').config;
+import { config as evidenceTailwind } from '@evidence-dev/tailwind/config';
 
 /** @type {import("tailwindcss").Config} */
 const config = {
@@ -13,4 +13,4 @@ const config = {
 	plugins: []
 };
 
-module.exports = config;
+export default config;
