@@ -92,7 +92,7 @@ test.describe('Page', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page A', { exact: true })).toBeVisible();
-		await page.waitForURL(`${basePath}/page-a`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/page-a`);
 
 		const homeSidebarLink = await sidebar.getByRole('link', { name: 'Home' });
 		await homeSidebarLink.click();
@@ -100,21 +100,21 @@ test.describe('Page', () => {
 
 		await expect(page.getByText('Welcome to Evidence', { exact: true })).toBeVisible();
 		
-		await page.waitForURL(`${basePath}/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/`);
 
 		const pageBSidebarLink = await sidebar.getByRole('link', { name: 'Page B' });
 		await pageBSidebarLink.click();
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page B', { exact: true })).toBeVisible();
-		await page.waitForURL(`${basePath}/page-b/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/page-b/`);
 
 		const logoLink = await page.getByAltText('Home').first();
 		await logoLink.click();
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('Welcome to Evidence', { exact: true })).toBeVisible();
-		await page.waitForURL(`${basePath}/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/`);
 	});
 	test('breadcrumbs should use base path', async ({ page }) => {
 		await page.goto(`${basePath}/nested/page-c`);
@@ -125,7 +125,7 @@ test.describe('Page', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is a nested page')).toBeVisible();
-		await page.waitForURL(`${basePath}/nested/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/nested/`);
 
 		const breadcrumbs = nestedCrumb.locator('..');
 
@@ -133,7 +133,7 @@ test.describe('Page', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('Welcome to Evidence', { exact: true })).toBeVisible();
-		await page.waitForURL(`${basePath}/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/`);
 	});
 
 	test('<img /> and ![]() should use base path', async ({ page }) => {
@@ -202,7 +202,7 @@ test.describe('Components', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page A')).toBeVisible();
-		await page.waitForURL(`${basePath}/page-a`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/page-a`);
 
 		await page.goto(`${basePath}/table-row-links`);
 		await waitForPageToLoad(page);
@@ -212,7 +212,7 @@ test.describe('Components', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page C')).toBeVisible();
-		await page.waitForURL(`${basePath}/nested/page-c/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/nested/page-c/`);
 	});
 
 	test('BigValue link should use base path', async ({ page }) => {
@@ -224,7 +224,7 @@ test.describe('Components', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page B')).toBeVisible();
-		await page.waitForURL(`${basePath}/page-b/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/page-b/`);
 	});
 
 	test('LinkButton should use base path', async ({ page }) => {
@@ -236,7 +236,7 @@ test.describe('Components', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page A')).toBeVisible();
-		await page.waitForURL(`${basePath}/page-a/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/page-a/`);
 	});
 
 	test('BigLink should use base path', async ({ page }) => {
@@ -248,7 +248,7 @@ test.describe('Components', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page C')).toBeVisible();
-		await page.waitForURL(`${basePath}/nested/page-c/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/nested/page-c/`);
 	});
 
 	test('addBasePath should work in custom components', async ({ page }) => {
@@ -260,6 +260,6 @@ test.describe('Components', () => {
 		await waitForPageToLoad(page);
 
 		await expect(page.getByText('This is Page B')).toBeVisible();
-		await page.waitForURL(`${basePath}/page-b/`, { waitUntil: 'networkidle' });
+		await page.waitForURL(`${basePath}/page-b/`);
 	});
 });
