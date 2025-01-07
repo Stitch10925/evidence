@@ -1,4 +1,4 @@
-import {config as evidenceTailwind} from '@evidence-dev/tailwind/config';
+import { config as evidenceTailwind } from '@evidence-dev/tailwind/config';
 import { getEvidenceConfig } from '@evidence-dev/sdk/config';
 
 const evidenceConfig = getEvidenceConfig();

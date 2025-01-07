@@ -22,7 +22,7 @@ const templatePaths = [
 	'src/pages/explore',
 	'src/pages/api/',
 	'src/pages/manifest.webmanifest/+server.js',
-	'tailwind.config.cjs',
+	'tailwind.config.mjs',
 	'postcss.config.cjs'
 ];
 const ignorePaths = ['static/data'];

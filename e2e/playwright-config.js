@@ -46,6 +46,6 @@ export const config = {
 		reuseExistingServer: !process.env.CI,
 		timeout: 120_000,
 		stdout: 'pipe',
-		stderr: 'pipe',
+		stderr: 'pipe'
 	}
 };
