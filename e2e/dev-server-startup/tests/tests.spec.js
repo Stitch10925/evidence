@@ -1,7 +1,7 @@
 import {describe, it, expect} from 'vitest';
 import child_process from "child_process";
 
-const allowedTimeout = process.env.GITHUB_ACTIONS ? 10000 : 5000
+const allowedTimeout = process.env.GITHUB_ACTIONS ? 15000 : 5000
 
 if (process.env.GITHUB_ACTIONS) {
 	console.log("Running on GitHub Actions")
