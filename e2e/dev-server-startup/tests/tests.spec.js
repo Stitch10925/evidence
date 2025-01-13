@@ -12,6 +12,8 @@ describe("Dev Server Startup", () => {
 		const proc = child_process.spawn('npm', ['run', 'dev'], { stdio: 'pipe', env: {
 			FORCE_COLOR: '0'
 		} })
+
+		setInterval(() => console.log("Test is still running...."), 1000)
 		const done = new Promise((resolve) => {
 			proc.on('close', resolve)
 			proc.on('exit', resolve)
