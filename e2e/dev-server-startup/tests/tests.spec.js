@@ -8,8 +8,10 @@ if (process.env.GITHUB_ACTIONS) {
 }
 
 describe("Dev Server Startup", () => {
-	it("Should start the dev server", async () => {
-		const proc = child_process.spawn('npm', ['run', 'dev'], { stdio: 'pipe' })
+	it("Should start the dev server", { timeout: allowedTimeout }, async () => {
+		const proc = child_process.spawn('npm', ['run', 'dev'], { stdio: 'pipe', env: {
+			FORCE_COLOR: '0'
+		} })
 		const done = new Promise((resolve) => {
 			proc.on('close', resolve)
 			proc.on('exit', resolve)
@@ -20,7 +22,7 @@ describe("Dev Server Startup", () => {
 			console.log(message)
 			
 			const regex = /VITE v[0-9]+\.[0-9]+\.[0-9]+\s+ready in [\d]+ ms/g
-			// console.log(regex.exec("VITE v5.4.11  ready in 1381 ms"))
+			
 			if (regex.exec(message)) {
 				proc.kill()
 				expect(true).toBe(true)
@@ -30,5 +32,5 @@ describe("Dev Server Startup", () => {
 
 		await done
 		// dev server should start within 5 seconds
-	}, { timeout: allowedTimeout })
+	})
 })
