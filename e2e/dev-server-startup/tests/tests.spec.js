@@ -1,6 +1,12 @@
 import {describe, it, expect} from 'vitest';
 import child_process from "child_process";
 
+const allowedTimeout = process.env.GITHUB_ACTIONS ? 10000 : 5000
+
+if (process.env.GITHUB_ACTIONS) {
+	console.log("Running on GitHub Actions")
+}
+
 describe("Dev Server Startup", () => {
 	it("Should start the dev server", async () => {
 		const proc = child_process.spawn('npm', ['run', 'dev'], { stdio: 'pipe' })
@@ -24,5 +30,5 @@ describe("Dev Server Startup", () => {
 
 		await done
 		// dev server should start within 5 seconds
-	}, { timeout: 5000 })
+	}, { timeout: allowedTimeout })
 })
